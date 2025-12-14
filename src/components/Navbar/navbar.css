@@ -1,0 +1,24 @@
+
+.ContainerNavbar{
+  background-color: antiquewhite;
+  padding: 1rem 2rem;
+  color: white;
+  text-align: left;
+}
+
+.navbarMain{
+  background-color: aqua;
+}
+
+.navbarSub {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+  background-color: violet ;
+}
+
+.search-container {
+  display: flex;
+  align-items: center; 
+  background-color: tomato;
+}
