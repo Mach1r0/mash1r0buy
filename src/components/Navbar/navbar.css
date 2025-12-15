@@ -1,24 +1,76 @@
-
 .ContainerNavbar{
-  background-color: antiquewhite;
-  padding: 1rem 2rem;
-  color: white;
+  background-color: white;
   text-align: left;
-}
-
-.navbarMain{
-  background-color: aqua;
-}
-
-.navbarSub {
-  margin-top: 1rem;
+  width: 100%;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.navbarMain {
+  background-color: black;
+  width: 80%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
   gap: 1rem;
-  background-color: violet ;
+}
+
+.title{
+  text-align: center;
+  color: grey;
+  font-size: 35px;
 }
 
 .search-container {
+  position: relative;
+  width: 70%;
   display: flex;
-  align-items: center; 
-  background-color: tomato;
+  align-items: center;
+  background-color: aqua;
+  border-radius: 7px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 8px 40px 8px 12px;
+  border: none;
+  border-radius: 7px;
+  height: 35px;
+  background: transparent;
+  outline: none;
+  color: black;
+}
+
+.search-container input {
+  padding: 8px 40px 8px 12px;
+  border-radius: 50pxs;
+  width: 100%;
+}
+
+.search-icon {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.icon-cart{
+  cursor: pointer;
+  height: 40px;
+  display: flex;
+  color: white;
+}
+
+.container-search-all {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  justify-content: center;
 }
