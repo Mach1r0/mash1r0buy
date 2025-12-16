@@ -1,9 +1,9 @@
 import React from 'react'
 import { fetchBanners } from '../../api/api';
 import { useEffect, useState } from 'react';
- import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import './carrossel.css';
+import './carrosselBanner.css';
 
 export default function Carrossel() {
   const [banners, setBanners] = useState([]);
@@ -38,9 +38,6 @@ export default function Carrossel() {
   return (
     <div className='carousel-wrapper'>
       <div className='carousel-container'>
-        <button className='arrow arrow-left' onClick={prevSlide}>
-          <ArrowBackIosIcon />
-        </button>
         <div className='container-images' style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
           {banners.map((banner) => (
             <img 
@@ -51,20 +48,27 @@ export default function Carrossel() {
             />
           ))}
         </div>
-        
-        <button className='arrow arrow-right' onClick={nextSlide}>
-          <ArrowForwardIosIcon />
-        </button>
       </div>
       
-      <div className='dots-container'>
-        {banners.map((_, index) => (
-          <button 
-            key={index}
-            className={`dot ${currentSlide === index ? 'active' : ''}`}
-            onClick={() => goToSlide(index)}
-          />
-        ))}  
+      <div className='banner-controls'>
+        <div className='dots-container'>
+          {banners.map((_, index) => (
+            <button 
+              key={index}
+              className={`dot ${currentSlide === index ? 'active' : ''}`}
+              onClick={() => goToSlide(index)}
+            />
+          ))}  
+        </div>
+        
+        <div className='arrows-container'>
+          <button className='arrow' onClick={prevSlide}>
+            <ArrowBackIosIcon fontSize="small" />
+          </button>
+          <button className='arrow' onClick={nextSlide}>
+            <ArrowForwardIosIcon fontSize="small" />
+          </button>
+        </div>
       </div>
     </div>
   )

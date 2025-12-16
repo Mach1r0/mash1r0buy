@@ -3,7 +3,7 @@ import { fetchBanners } from '../../api/api';
 import { useEffect, useState } from 'react';
 import { FaArrowRight } from "react-icons/fa";
 import { FaArrowLeft } from "react-icons/fa";
-import './carrosseMiniBanner.css';
+import './carrosselMininBanner.css';
 
 export default function CarroseMiniBanner() {
   const [banners, setBanners] = useState([]);

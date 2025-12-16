@@ -2,11 +2,14 @@ import React, { useEffect, useState, useRef } from 'react';
 import './secoes.css';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
 
 export default function Secoes() {
   const [sections, setSections] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [cart, setCart] = useState({});
 
   useEffect(() => {
     async function loadSections() {
@@ -30,6 +33,24 @@ export default function Secoes() {
     loadSections();
   }, []);
 
+  const addToCart = (productId) => {
+    setCart(prev => ({
+      ...prev,
+      [productId]: (prev[productId] || 0) + 1
+    }));
+  };
+
+  const removeFromCart = (productId) => {
+    setCart(prev => {
+      const newCount = (prev[productId] || 0) - 1;
+      if (newCount <= 0) {
+        const { [productId]: _, ...rest } = prev;
+        return rest;
+      }
+      return { ...prev, [productId]: newCount };
+    });
+  };
+
   const ProductCarousel = ({ items }) => {
     const carouselRef = useRef(null);
     const [currentPage, setCurrentPage] = useState(0);
@@ -38,8 +59,8 @@ export default function Secoes() {
 
     const scroll = (direction) => {
       if (carouselRef.current) {
-        const cardWidth = 150;
-        const gap = 20;
+        const cardWidth = 170;
+        const gap = 15;
         const scrollAmount = (cardWidth + gap) * itemsPerPage;
         carouselRef.current.scrollBy({
           left: direction === 'left' ? -scrollAmount : scrollAmount,
@@ -56,8 +77,8 @@ export default function Secoes() {
 
     const goToPage = (pageIndex) => {
       if (carouselRef.current) {
-        const cardWidth = 150;
-        const gap = 20;
+        const cardWidth = 170;
+        const gap = 15;
         const scrollAmount = pageIndex * (cardWidth + gap) * itemsPerPage;
         carouselRef.current.scrollTo({
           left: scrollAmount,
@@ -73,6 +94,7 @@ export default function Secoes() {
           {items.map((produto) => {
             const img = produto.images?.[0];
             const price = produto.prices?.[0]?.price || produto.price;
+            const quantity = cart[produto.id] || 0;
             
             return (
               <div key={produto.id} className='product-card'>
@@ -83,23 +105,38 @@ export default function Secoes() {
                     className='product-image'
                   />
                 )}
-                <div className='products'>
+                <div className='product-info'>
                   <h3 className='product-name'>{produto.name}</h3>
                   <p className='product-description'>{produto.description}</p>
                   <p className='product-price'>R$ {price?.toFixed(2)}</p>
-                  <button className='add-button'>Adicionar</button>
                 </div>
+                
+                {quantity === 0 ? (
+                  <button className='add-button' onClick={() => addToCart(produto.id)}>
+                    Adicionar
+                  </button>
+                ) : (
+                  <div className='counter-container'>
+                    <button className='counter-btn' onClick={() => removeFromCart(produto.id)}>
+                      <RemoveIcon fontSize="small" />
+                    </button>
+                    <span className='counter-value'>{quantity}</span>
+                    <button className='counter-btn' onClick={() => addToCart(produto.id)}>
+                      <AddIcon fontSize="small" />
+                    </button>
+                  </div>
+                )}
               </div>
             );
           })}
         </div>
 
         <button className={`arrow-left ${currentPage === 0 ? 'inactive' : ''}`} onClick={() => scroll('left')}>
-          <ArrowBackIosIcon />
+          <ArrowBackIosIcon fontSize="small" />
         </button>
 
         <button className={`arrow-right ${currentPage === totalPages - 1 ? 'inactive' : ''}`} onClick={() => scroll('right')}>
-          <ArrowForwardIosIcon />
+          <ArrowForwardIosIcon fontSize="small" />
         </button>
         
         <div className='dots-container'>
@@ -122,7 +159,10 @@ export default function Secoes() {
     <div className='secoes-container'>
       {sections.map((section) => (
         <div key={section.id} className='section'>
-          <h2 className='section-title'>{section.title}</h2>
+          <div className='section-header'>
+            <h2 className='section-title'>{section.title}</h2>
+            <a href="#" className='ver-mais-link'>Ver mais &gt;</a>
+          </div>
           
           {section.items && section.items.length > 0 ? (
             <ProductCarousel items={section.items} />

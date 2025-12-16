@@ -1,5 +1,5 @@
 .ContainerNavbar{
-  background-color: white;
+  background-color: #ffffff;
   text-align: left;
   width: 100%;
   display: flex;
@@ -7,11 +7,12 @@
   align-items: center;
   margin: 0;
   padding: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .navbarMain {
-  background-color: black;
-  width: 80%;
+  background-color: #2175B5;
+  width: 100%;
   justify-content: center;
   align-items: center;
   display: flex;
@@ -22,28 +23,37 @@
 
 .title{
   text-align: center;
-  color: grey;
-  font-size: 35px;
+  color: #ffffff;
+  font-size: 28px;
+  font-weight: 600;
+  margin: 0;
 }
 
 .search-container {
   position: relative;
   width: 70%;
+  max-width: 500px;
   display: flex;
   align-items: center;
-  background-color: aqua;
-  border-radius: 7px;
+  background-color: #ffffff;
+  border-radius: 25px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .search-input {
   width: 100%;
-  padding: 8px 40px 8px 12px;
+  padding: 10px 40px 10px 16px;
   border: none;
-  border-radius: 7px;
-  height: 35px;
+  border-radius: 25px;
+  height: 40px;
   background: transparent;
   outline: none;
-  color: black;
+  color: #333;
+  font-size: 14px;
+}
+
+.search-input::placeholder {
+  color: #999;
 }
 
 .search-container input {
@@ -58,11 +68,13 @@
   top: 50%;
   transform: translateY(-50%);
   pointer-events: none;
+  color: #2175B5;
 }
 
 .icon-cart{
   cursor: pointer;
-  height: 40px;
+  height: 30px;
+  width: 30px;
   display: flex;
   color: white;
 }
