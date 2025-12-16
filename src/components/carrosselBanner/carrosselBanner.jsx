@@ -1,8 +1,8 @@
 import React from 'react'
 import { fetchBanners } from '../../api/api';
 import { useEffect, useState } from 'react';
-import { FaArrowRight } from "react-icons/fa";
-import { FaArrowLeft } from "react-icons/fa";
+ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import './carrossel.css';
 
 export default function Carrossel() {
@@ -13,8 +13,8 @@ export default function Carrossel() {
     async function loadBanners() {
       try {
         const bannersData = await fetchBanners();
-        const desktopBanners = bannersData.filter(banner => banner.is_desktop === true);
-        setBanners(desktopBanners);
+        console.log('bannersData length:', bannersData.length);
+        setBanners(bannersData);
       } catch (error) {
         console.error('Erro ao carregar banners:', error);
       }
@@ -39,9 +39,8 @@ export default function Carrossel() {
     <div className='carousel-wrapper'>
       <div className='carousel-container'>
         <button className='arrow arrow-left' onClick={prevSlide}>
-          <FaArrowLeft />
+          <ArrowBackIosIcon />
         </button>
-        
         <div className='container-images' style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
           {banners.map((banner) => (
             <img 
@@ -54,7 +53,7 @@ export default function Carrossel() {
         </div>
         
         <button className='arrow arrow-right' onClick={nextSlide}>
-          <FaArrowRight />
+          <ArrowForwardIosIcon />
         </button>
       </div>
       
