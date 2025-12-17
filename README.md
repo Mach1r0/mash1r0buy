@@ -1,16 +1,84 @@
-# React + Vite
+#  Mashiro Buy
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> Plataforma de e-commerce desenvolvida com React e Vite
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+##  Sobre o Projeto
 
-## React Compiler
+Mashiro Buy é uma aplicação de e-commerce responsiva que apresenta duas telas principais:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Funcionalidades:
 
-## Expanding the ESLint configuration
+ **Tela Home**
+- Carrossel de banners promocionais
+- Mini banners secundários (ocultados em telas pequenas)
+- Listagem de produtos por categorias
+- Cards de produtos com:
+  - Imagem, nome e descrição
+  - Preço com destaque para promoções
+  - Badge de desconto
+  - Badge de frete grátis
+  - Badge de produto esgotado
+  - Contador de quantidade no carrinho
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+**Tela de Detalhes do Produto**
+- Galeria de imagens com thumbnails
+- Informações completas do produto
+- Badges de desconto e frete grátis
+- Contador de quantidade
+- Carrossel de produtos relacionados
+- Breadcrumb de navegação
+
+ **Recursos Adicionais**
+- Carrinho de compras funcional (modal)
+- Layout 100% responsivo
+- Navegação com React Router
+- Interface moderna e intuitiva
+
+---
+
+## Como Rodar o Projeto
+
+### Pré-requisitos:
+- Node.js (versão 16 ou superior)
+- npm ou yarn
+
+### Instalação:
+
+1. **Clone o repositório:**
+   ```bash
+   git clone https://github.com/Mach1r0/mash1r0buy.git
+   ```
+
+2. **Acesse o diretório:**
+   ```bash
+   cd mash1r0buy
+   ```
+
+3. **Instale as dependências:**
+   ```bash
+   npm install
+   ```
+
+4. **Configure as variáveis de ambiente:**
+   ```bash
+   cp .envexample .env
+   ```
+
+5. **Inicie o servidor:**
+   ```bash
+   npm run dev
+   ```
+
+
+---
+
+## Deploy
+
+O projeto está hospedado e pode ser acessado em:
+
+ **[https://mash1r0buy.vercel.app](https://mash1r0buy.vercel.app)**
+
+---
+
