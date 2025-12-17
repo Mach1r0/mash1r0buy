@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ProductCard from '../productCard/productCard';
@@ -7,36 +7,49 @@ import './ProductCarousel.css';
 export default function ProductCarousel({ items, cart, addToCart, removeFromCart }) {
   const carouselRef = useRef(null);
   const [currentPage, setCurrentPage] = useState(0);
-  const itemsPerPage = 5;
+  const [itemsPerPage, setItemsPerPage] = useState(5);
+  
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 600) {
+        setItemsPerPage(2);
+      } else if (window.innerWidth <= 900) {
+        setItemsPerPage(4);
+      } else {
+        setItemsPerPage(5);
+      }
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  
   const totalPages = Math.ceil(items.length / itemsPerPage);
 
   const scroll = (direction) => {
-    if (carouselRef.current) {
-      const cardWidth = 170;
-      const gap = 15;
-      const scrollAmount = (cardWidth + gap) * itemsPerPage;
-      carouselRef.current.scrollBy({
-        left: direction === 'left' ? -scrollAmount : scrollAmount,
-        behavior: 'smooth'
-      });
-      
-      if (direction === 'left') {
-        setCurrentPage(Math.max(0, currentPage - 1));
-      } else {
-        setCurrentPage(Math.min(totalPages - 1, currentPage + 1));
-      }
-    }
+    const newPage = direction === 'left' 
+      ? Math.max(0, currentPage - 1)
+      : Math.min(totalPages - 1, currentPage + 1);
+    
+    goToPage(newPage);
   };
 
   const goToPage = (pageIndex) => {
     if (carouselRef.current) {
-      const cardWidth = 170;
-      const gap = 15;
-      const scrollAmount = pageIndex * (cardWidth + gap) * itemsPerPage;
-      carouselRef.current.scrollTo({
-        left: scrollAmount,
-        behavior: 'smooth'
-      });
+      const cards = carouselRef.current.children;
+      if (cards.length > 0) {
+        const targetCardIndex = Math.min(pageIndex * itemsPerPage, items.length - 1);
+        const targetCard = cards[targetCardIndex];
+        
+        if (targetCard) {
+          const scrollLeft = targetCard.offsetLeft - carouselRef.current.offsetLeft;
+          carouselRef.current.scrollTo({
+            left: scrollLeft,
+            behavior: 'smooth'
+          });
+        }
+      }
       setCurrentPage(pageIndex);
     }
   };

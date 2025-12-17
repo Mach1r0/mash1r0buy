@@ -10,7 +10,6 @@ export default function Navbar({ cart, products, addToCart, removeFromCart, remo
 
   return (
     <div className="ContainerNavbar">
-      {/* Primeiro nível */}
       <div className="navbarMain">
         <Link to="/" className="navbar-logo-title">
           <FaShoppingBasket size={40} color="#e67e22" style={{ marginRight: 8 }} />

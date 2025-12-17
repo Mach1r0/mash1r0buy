@@ -13,7 +13,6 @@ export default function Carrossel() {
     async function loadBanners() {
       try {
         const bannersData = await fetchBanners();
-        console.log('bannersData length:', bannersData.length);
         setBanners(bannersData);
       } catch (error) {
         console.error('Erro ao carregar banners:', error);

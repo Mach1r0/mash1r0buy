@@ -26,7 +26,6 @@ export default function Secoes({ cart, addToCart, removeFromCart, setCartProduct
         
         setSections(updatedSections);
         
-        // Coleta todos os produtos de todas as seções para o carrinho
         const allProducts = updatedSections.flatMap(section => section.items || []);
         if (setCartProducts) {
           setCartProducts(allProducts);

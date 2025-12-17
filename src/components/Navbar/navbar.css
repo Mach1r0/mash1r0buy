@@ -5,6 +5,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-self: center;
   margin: 0;
   padding: 0;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -16,7 +17,7 @@
 .navbarMain {
   background-color: #2175B5;
   width: 100%;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   display: flex;
   padding: 1rem 2rem;
@@ -101,7 +102,7 @@
 }
 
 .cart-btn {
-  background: #43b02a;
+  background: #FF8C00;
   color: #fff;
   border: none;
   border-radius: 6px;
@@ -117,7 +118,7 @@
 }
 
 .cart-btn:hover {
-  background: #3a9624;
+  background: #FF8C00cc;
 }
 
 .cart-badge {

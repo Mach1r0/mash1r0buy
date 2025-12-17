@@ -67,11 +67,6 @@
 
 @media (max-width: 480px) {
   .mini-banners-wrapper {
-    margin: 12px auto;
-    padding: 0 12px;
-  }
-  
-  .mini-banner-image {
-    max-height: 80px;
+    display: none;
   }
 }

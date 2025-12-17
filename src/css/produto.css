@@ -112,7 +112,6 @@
   font-weight: 500;
 }
 
-/* Badges */
 .produto-badges {
   display: flex;
   gap: 8px;
@@ -137,7 +136,6 @@
   font-weight: 600;
 }
 
-/* Preços */
 .produto-preco-container {
   margin: 8px 0;
 }

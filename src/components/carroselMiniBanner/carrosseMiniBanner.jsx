@@ -11,7 +11,6 @@ export default function CarroseMiniBanner() {
       try {
         const bannersData = await fetchMiniBanners();
         setBanners(bannersData);
-        console.log('Mini banners carregados:', bannersData);
       } catch (error) {
         console.error('Erro ao carregar banners:', error);
       }

@@ -1,16 +1,14 @@
-/* Make the app take full height and footer stick to bottom */
 .app-root {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-.app-root > .MuiBox-root, /* for MUI containers if used */
+.app-root > .MuiBox-root, 
 .app-root > #root > div {
   flex: 1 0 auto;
 }
 
-/* Ensure BrowserRouter content grows, footer stays at bottom */
 .app-root > .app-content {
   flex: 1 0 auto;
 }

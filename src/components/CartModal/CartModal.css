@@ -215,7 +215,7 @@
 
 .cart-checkout-btn {
   width: 100%;
-  background: #43b02a;
+  background: #2175B5;
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -230,7 +230,7 @@
 }
 
 .cart-checkout-btn:hover {
-  background: #3a9624;
+  background: #1a5a8a;
 }
 
 .cart-total {

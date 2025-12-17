@@ -240,9 +240,9 @@ border-radius: 6px;
 
 @media (max-width: 600px) {
   .product-card {
-    width: calc((100% - 30px) / 3);
-    min-width: calc((100% - 30px) / 3);
-    max-width: calc((100% - 30px) / 3);
+    width: calc((100% - 15px) / 2);
+    min-width: calc((100% - 15px) / 2);
+    max-width: calc((100% - 15px) / 2);
     padding: 8px;
   }
   
