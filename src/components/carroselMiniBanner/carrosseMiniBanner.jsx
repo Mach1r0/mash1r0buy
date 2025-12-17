@@ -1,20 +1,17 @@
 import React from 'react'
-import { fetchBanners } from '../../api/api';
+import { fetchMiniBanners } from '../../api/api';
 import { useEffect, useState } from 'react';
-import { FaArrowRight } from "react-icons/fa";
-import { FaArrowLeft } from "react-icons/fa";
 import './carrosselMininBanner.css';
 
 export default function CarroseMiniBanner() {
   const [banners, setBanners] = useState([]);
-  const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
     async function loadBanners() {
       try {
-        const bannersData = await fetchBanners();
-        const desktopBanners = bannersData.filter(banner => banner.is_desktop === true);
-        setBanners(desktopBanners);
+        const bannersData = await fetchMiniBanners();
+        setBanners(bannersData);
+        console.log('Mini banners carregados:', bannersData);
       } catch (error) {
         console.error('Erro ao carregar banners:', error);
       }
@@ -23,49 +20,20 @@ export default function CarroseMiniBanner() {
     loadBanners();
   }, []);
 
-  const goToSlide = (index) => {
-    setCurrentSlide(index);
-  }
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % banners.length);
-  }
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + banners.length) % banners.length);
-  }
+  if (banners.length === 0) return null;
 
   return (
-    <div className='carousel-wrapper'>
-      <div className='carousel-container'>
-        <button className='arrow arrow-left' onClick={prevSlide}>
-          <FaArrowLeft />
-        </button>
-        
-        <div className='container-images' style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
-          {banners.map((banner) => (
+    <div className='mini-banners-wrapper'>
+      <div className='mini-banners-container'>
+        {banners.slice(0, 3).map((banner) => (
+          <div key={banner.id} className='mini-banner-item'>
             <img 
-              key={banner.id} 
               src={`https://ibassets.com.br/ib.store.banner/bnr-${banner.image}`}
               alt={banner.title}
-              className='banner-image'
+              className='mini-banner-image'
             />
-          ))}
-        </div>
-        
-        <button className='arrow arrow-right' onClick={nextSlide}>
-          <FaArrowRight />
-        </button>
-      </div>
-      
-      <div className='dots-container'>
-        {banners.map((_, index) => (
-          <button 
-            key={index}
-            className={`dot ${currentSlide === index ? 'active' : ''}`}
-            onClick={() => goToSlide(index)}
-          />
-        ))}  
+          </div>
+        ))}
       </div>
     </div>
   )

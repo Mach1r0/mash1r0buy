@@ -1,0 +1,77 @@
+/* Mini Banners - 3 side by side */
+.mini-banners-wrapper {
+  width: 100%;
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 0 16px;
+}
+
+.mini-banners-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.mini-banner-item {
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.mini-banner-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.mini-banner-image {
+  width: 100%;
+  height: auto;
+  max-height: 180px;
+  display: block;
+  object-fit: cover;
+}
+
+/* Responsivo */
+@media (max-width: 900px) {
+  .mini-banners-container {
+    gap: 12px;
+  }
+  
+  .mini-banner-image {
+    max-height: 150px;
+  }
+}
+
+@media (max-width: 768px) {
+  .mini-banners-container {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  
+  .mini-banner-image {
+    max-height: 120px;
+  }
+  
+  .mini-banners-wrapper {
+    margin: 15px auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .mini-banner-image {
+    max-height: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mini-banners-wrapper {
+    margin: 12px auto;
+    padding: 0 12px;
+  }
+  
+  .mini-banner-image {
+    max-height: 80px;
+  }
+}

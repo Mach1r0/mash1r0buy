@@ -1,8 +1,8 @@
 import React from 'react'
 import { fetchBanners } from '../../api/api';
 import { useEffect, useState } from 'react';
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import './carrosselBanner.css';
 
 export default function Carrossel() {
@@ -51,6 +51,10 @@ export default function Carrossel() {
       </div>
       
       <div className='banner-controls'>
+        <button className='banner-arrow' onClick={prevSlide}>
+          <ChevronLeftIcon />
+        </button>
+        
         <div className='dots-container'>
           {banners.map((_, index) => (
             <button 
@@ -61,14 +65,9 @@ export default function Carrossel() {
           ))}  
         </div>
         
-        <div className='arrows-container'>
-          <button className='arrow' onClick={prevSlide}>
-            <ArrowBackIosIcon fontSize="small" />
-          </button>
-          <button className='arrow' onClick={nextSlide}>
-            <ArrowForwardIosIcon fontSize="small" />
-          </button>
-        </div>
+        <button className='banner-arrow' onClick={nextSlide}>
+          <ChevronRightIcon />
+        </button>
       </div>
     </div>
   )

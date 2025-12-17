@@ -50,61 +50,66 @@
 
 .banner-controls {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  gap: 10px;
+  justify-content: center;
+  gap: 20px;
   padding: 10px 0;
+  height: 35px;
 }
 
 .dots-container {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 8px;
 }
 
 .arrows-container {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
+  display: contents;
 }
 
-.arrow {
+.banner-arrow {
   background-color: rgba(255, 255, 255, 0.95);
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   width: 35px;
   height: 35px;
+  min-height: 35px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
 }
 
-.arrow:hover {
+.banner-arrow:hover {
   background-color: #2175B5;
   border-color: #2175B5;
 }
 
-.arrow:hover svg {
+.banner-arrow:hover svg {
   color: white;
 }
 
-.arrow svg {
+.banner-arrow svg {
   color: #333;
-  font-size: 16px;
+  font-size: 20px;
 }
 
 .dot {
   width: 10px;
   height: 10px;
+  min-height: 10px;
   border-radius: 50%;
   background-color: #ddd;
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;
   padding: 0;
+  flex-shrink: 0;
 }
 
 .dot.active {
